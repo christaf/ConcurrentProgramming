@@ -37,6 +37,7 @@ public class ExamplePhaser {
                 Thread.sleep(3000);
                 phaser.arriveAndAwaitAdvance();
                 System.out.println(this.name + " at phase: " + phaser.getPhase());
+                Thread.sleep(sleepTime);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -48,7 +49,7 @@ public class ExamplePhaser {
 
     public static void main(String[] args) {
         int numberOfThreads = 10;
-        int numberOfPhases = 4;
+        int numberOfPhases = 2;
         phaser = new Phaser(1);
         phaser.bulkRegister(numberOfThreads);
         MainThread mainThread = new MainThread(numberOfPhases);
