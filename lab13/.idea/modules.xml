@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/CountDownLatch.iml" filepath="$PROJECT_DIR$/CountDownLatch.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lab13.iml" filepath="$PROJECT_DIR$/lab13.iml" />
     </modules>
   </component>
 </project>
