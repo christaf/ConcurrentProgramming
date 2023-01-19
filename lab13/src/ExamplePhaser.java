@@ -63,7 +63,7 @@ public class ExamplePhaser {
             parametrizedThread.start();
         }
 
-
+/*
         try {
             mainThread.join();
         } catch (InterruptedException e) {
@@ -78,5 +78,7 @@ public class ExamplePhaser {
             }
         }
 
+
+ */
     }
 }
