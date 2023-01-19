@@ -2,6 +2,6 @@ Proszę stworzyć przykładowe aplikacje prezentujące możliwości następując
     a) CountDownLatch,
     b) CyclicBarrier,
     c) Phaser,
-    c) Exchanger,
-    d) Semaphore,
-    e) SynchronousQueue.
+    d) Exchanger,
+    e) Semaphore,
+    f) SynchronousQueue.
