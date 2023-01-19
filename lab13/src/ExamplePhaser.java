@@ -49,7 +49,7 @@ public class ExamplePhaser {
 
     public static void main(String[] args) {
         int numberOfThreads = 10;
-        int numberOfPhases = 2;
+        int numberOfPhases = 3;
         phaser = new Phaser(1);
         phaser.bulkRegister(numberOfThreads);
         MainThread mainThread = new MainThread(numberOfPhases);
@@ -63,22 +63,5 @@ public class ExamplePhaser {
             parametrizedThread.start();
         }
 
-/*
-        try {
-            mainThread.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        for (ParametrizedThread parametrizedThread : parametrizedThreads) {
-            try {
-                parametrizedThread.join();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-
-
- */
     }
 }
