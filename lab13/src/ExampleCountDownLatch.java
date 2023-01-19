@@ -6,18 +6,18 @@ public class ExampleCountDownLatch {
         private final long sleepTime;
 
         public ParametrizedThread(int id) {
-            this.name = "Watek nr " + (id + 1);
+            this.name = "Thread nr " + (id + 1);
             this.sleepTime = 1000L * id;
         }
 
         public void run() {
-            System.out.println(this.name + " rozpoczyna działanie");
+            System.out.println(this.name + " starts execution");
             try {
                 Thread.sleep(sleepTime);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            System.out.println(name + " kończy działanie");
+            System.out.println(name + " finishes execution");
             latch.countDown();
         }
     }
@@ -37,6 +37,6 @@ public class ExampleCountDownLatch {
             parametrizedThread.start();
         }
         latch.await();
-        System.out.println("Wszystkie watki zakończone");
+        System.out.println("THE END");
     }
 }

@@ -7,18 +7,18 @@ public class ExampleCyclicBarrier {
         private final long sleepTime;
 
         public ParametrizedThread(int id) {
-            this.name = "Watek nr " + (id + 1);
+            this.name = "Thread nr " + (id + 1);
             this.sleepTime = 1000L * id;
         }
 
         public void run() {
-            System.out.println(this.name + " rozpoczyna działanie");
+            System.out.println(this.name + " starts execution");
             try {
                 Thread.sleep(sleepTime);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            System.out.println(name + " kończy działanie");
+            System.out.println(name + " finishes execution");
             try {
                 barrier.await();
             } catch (InterruptedException | BrokenBarrierException e) {
@@ -32,7 +32,7 @@ public class ExampleCyclicBarrier {
     public static void main(String[] args) {
         int barrierParameter = 3;
         int numberOfThreads = 5 * barrierParameter;
-        barrier = new CyclicBarrier(barrierParameter, () -> System.out.println("Wszystkie watki zakończone"));
+        barrier = new CyclicBarrier(barrierParameter, () -> System.out.println("THE END"));
 
         ParametrizedThread[] parametrizedThreads = new ParametrizedThread[numberOfThreads];
         for (int i = 0; i < numberOfThreads; i++) {
