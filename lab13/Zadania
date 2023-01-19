@@ -1,0 +1,7 @@
+Proszę stworzyć przykładowe aplikacje prezentujące możliwości następujących synchronizatorów:
+    a) CountDownLatch,
+    b) CyclicBarrier,
+    c) Phaser,
+    c) Exchanger,
+    d) Semaphore,
+    e) SynchronousQueue.
