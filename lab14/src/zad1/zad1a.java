@@ -11,7 +11,6 @@ public class zad1a {
         }
 
         public void run() {
-            // Pętla wykonująca zadanie
             for (int i = 0; i < 100; i++) {
                 if (isCancelled) {
                     System.out.println("variable isCancelled was set true");
