@@ -1,7 +1,7 @@
-package zad1;
+package CancellingTask;
 
 
-public class zad1a {
+public class ExampleCancellableTaskUsingSharedVariable {
     static class CancellableTaskUsingSharedVariable extends Thread {
         private boolean isCancelled = false;
 

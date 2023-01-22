@@ -1,6 +1,6 @@
-package zad1;
+package CancellingTask;
 
-public class zad1b {
+public class ExampleCancellableTaskUsingInterruption {
     static class CancellableTaskUsingInterruption extends Thread {
         public void run() {
             for (int i = 0; i < 100; i++) {
