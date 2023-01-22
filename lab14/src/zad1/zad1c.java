@@ -28,6 +28,7 @@ public class zad1c {
         Thread.sleep(3000);
         // Cancelling the task after 3 seconds
         future.cancel(true);
+        executor.shutdown();
 
     }
 
