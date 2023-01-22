@@ -2,7 +2,7 @@ package zad1;
 
 
 public class zad1a {
-    static class TaskThread extends Thread {
+    static class CancellableTaskUsingSharedVariable extends Thread {
         private boolean isCancelled = false;
 
         public void cancel() {
@@ -27,11 +27,11 @@ public class zad1a {
     }
 
     public static void main(String[] args) {
-        // Utworzenie i uruchomienie wątku wykonującego zadanie
-        final TaskThread taskThread = new TaskThread();
-        taskThread.start();
+        // Create and run our task
+        final CancellableTaskUsingSharedVariable cancellableTaskUsingSharedVariable = new CancellableTaskUsingSharedVariable();
+        cancellableTaskUsingSharedVariable.start();
 
-        // Uruchomienie drugiego wątku, który anuluje zadanie po 5 sekundach
+        // Creating 2nd thread, which will cancel our task after 5 seconds
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -40,7 +40,7 @@ public class zad1a {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                taskThread.cancel();
+                cancellableTaskUsingSharedVariable.cancel();
             }
         }).start();
     }

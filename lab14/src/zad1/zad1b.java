@@ -1,7 +1,7 @@
 package zad1;
 
 public class zad1b {
-    static class TaskThread extends Thread {
+    static class CancellableTaskUsingInterruption extends Thread {
         public void run() {
             for (int i = 0; i < 100; i++) {
                 if (isInterrupted()) {
@@ -21,11 +21,11 @@ public class zad1b {
     }
 
     public static void main(String[] args) {
-        // Utworzenie i uruchomienie wątku wykonującego zadanie
-        final TaskThread taskThread = new TaskThread();
+        // Create and run our task
+        final CancellableTaskUsingInterruption taskThread = new CancellableTaskUsingInterruption();
         taskThread.start();
 
-        // Uruchomienie drugiego wątku, który anuluje zadanie po 5 sekundach
+        // Creating 2nd thread, which will cancel our task after 5 seconds
         new Thread(new Runnable() {
             @Override
             public void run() {
