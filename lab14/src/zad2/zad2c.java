@@ -8,76 +8,91 @@ public class zad2c {
 
     static class SharedData {
         private int data;
+        private final ReentrantReadWriteLock lock;
+
+        SharedData(ReentrantReadWriteLock lock) {
+            this.lock = lock;
+        }
+
 
         public int getData() {
-            return data;
+            //System.out.println("GET: before reading value");
+            lock.readLock().lock();
+           // System.out.println("GET: reading value " + data);
+            try {
+                sleep(1000);
+                return data;
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+                return -1;
+            } finally {
+                lock.readLock().unlock();
+               // System.out.println("GET: after reading value");
+            }
+
         }
 
         public void setData(int value) {
-            data = value;
+           // System.out.println("SET: before writing value");
+            lock.writeLock().lock();
+            //System.out.println("SET: writing value " + data);
+            try {
+                sleep(1000);
+                this.data = value;
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+                this.data = -1;
+            } finally {
+                lock.writeLock().unlock();
+               // System.out.println("SET: after writing value");
+            }
+
         }
     }
 
-    static class ReadingThread implements Runnable {
+    static class ReadingThread extends Thread {
         private final SharedData sharedData;
-        private final ReentrantReadWriteLock.ReadLock lock;
 
-        public ReadingThread(SharedData sharedData, ReentrantReadWriteLock lock) {
+        public ReadingThread(SharedData sharedData) {
             this.sharedData = sharedData;
-            this.lock = lock.readLock();
         }
 
         public void run() {
             while (true) {
-                lock.lock();
-                try {
-                    int data = sharedData.getData();
-                    System.out.println("ReadingThread: reading value " + data);
-                    sleep(500);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                } finally {
-                    lock.unlock();
-                }
+                int data = sharedData.getData();
+                System.out.println("ReadingThread: reading value " + data);
             }
         }
     }
 
-    static class ModifyingThread implements Runnable {
-        private final SharedData sharedData;
-        private final ReentrantReadWriteLock.WriteLock lock;
 
-        public ModifyingThread(SharedData sharedData, ReentrantReadWriteLock lock) {
+    static class ModifyingThread extends Thread {
+        private final SharedData sharedData;
+
+        public ModifyingThread(SharedData sharedData) {
             this.sharedData = sharedData;
-            this.lock = lock.writeLock();
         }
 
         public void run() {
             while (true) {
-                lock.lock();
-                try {
-                    int value = (int) (Math.random() * 100 + 1);
-                    sharedData.setData(value);
-                    System.out.println("ModifyingThread: set value to " + value);
-                    sleep(1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                } finally {
-                    lock.unlock();
-                }
+                int value = (int) (Math.random() * 100 + 1);
+                sharedData.setData(value);
+                System.out.println("ModifyingThread: set value to " + value);
             }
         }
     }
 
 
     public static void main(String[] args) {
-        SharedData sharedData = new SharedData();
         ReentrantReadWriteLock lock = new ReentrantReadWriteLock();
+        SharedData sharedData = new SharedData(lock);
 
-        Thread readingThread = new Thread(new ReadingThread(sharedData, lock));
-        Thread modifyingThread = new Thread(new ModifyingThread(sharedData, lock));
+        Thread modifyingThread = new Thread(new ModifyingThread(sharedData));
+        Thread readingThread1 = new Thread(new ReadingThread(sharedData));
+        Thread readingThread2 = new Thread(new ReadingThread(sharedData));
 
-        readingThread.start();
         modifyingThread.start();
+        readingThread1.start();
+        readingThread2.start();
     }
 }
