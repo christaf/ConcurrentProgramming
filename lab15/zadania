@@ -1,0 +1,17 @@
+1. Proszę stworzyć aplikację demonstrującą użycie algorytmu
+ "Fork / Join" dla następujących przykładów:
+a) zliczanie miejsca zajmowanego przez wszystkie pliki w katalogu (wraz z podkatalogami),
+gdzie rekurencyjny podział zadania dotyczy każdego podkatalogu,
+b) sortowania tablicy, gdzie rekurencyjny podział jest wykonywany jeżeli długość tablicy
+jest większa od 2, następnie należy wykonać scalenie podtablic.
+
+2. Proszę wykonać dwoma sposobami (przy użyciu metod synchronizowanych oraz wzorca
+"Aktywny obiekt") program przedstawiający działanie:
+a) windy, którą jeździ wielu użytkowników,
+b) drukarki, na której drukuje wielu użytkowników.
+W jaki sposób można dodać w tych programach różne priorytety dla poszczególnych zadań?
+
+3. Wzorując się na przykładzie z serwerem echa proszę opracować
+i porównać między sobą kilka wariantów:
+a) klienta oraz serwera banku z możliwością wykonywania operacji na kontach,
+b) klienta oraz serwera sklepu z możliwością kupowania towarów.
