@@ -1,0 +1,3 @@
+W jaki sposób można dodać w tych programach różne priorytety dla poszczególnych zadań?
+
+Uzywajac klasy PriorityQueue dodajac wlasny comparator
