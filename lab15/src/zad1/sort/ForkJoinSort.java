@@ -1,4 +1,4 @@
-package zad1;
+package zad1.sort;
 
 import java.util.Arrays;
 import java.util.concurrent.ForkJoinPool;

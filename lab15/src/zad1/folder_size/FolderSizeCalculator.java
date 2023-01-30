@@ -1,4 +1,4 @@
-package zad1;
+package zad1.folder_size;
 
 import java.io.File;
 import java.util.ArrayList;
